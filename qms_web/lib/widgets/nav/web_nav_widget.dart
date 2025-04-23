@@ -56,7 +56,7 @@ class WebNavWidget extends StatelessWidget {
                   index: index,
                   textStyle:
                       currentIndex == index
-                          ? UtilText.get24(
+                          ? UtilText.get20(
                             context,
                             CustomColor.primaryBtnTextColor,
                           ).copyWith(fontWeight: FontWeight.bold)
@@ -64,10 +64,46 @@ class WebNavWidget extends StatelessWidget {
                             context,
                             CustomColor.primaryBtnTextColor,
                           ).copyWith(fontWeight: FontWeight.w400),
+
+                  padding:
+                      currentIndex == index
+                          ? Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                              0,
+                              0,
+                              16,
+                              0,
+                            ),
+                            child: Container(
+                              width: 4,
+                              height: 100,
+                              decoration: BoxDecoration(
+                                color: CustomColor.primaryBtnTextColor,
+                              ),
+                            ),
+                          )
+                          : Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                              0,
+                              0,
+                              16,
+                              0,
+                            ),
+                            child: Container(
+                              width: 4,
+                              height: 100,
+                              decoration: BoxDecoration(
+                                color: CustomColor.grayStaticColor,
+                              ),
+                            ),
+                          ),
                   icon: Icon(
                     // UtilMenu.menuIcon[index],
                     item.icon,
-                    color: CustomColor.grayStaticColor,
+                    color:
+                        currentIndex == index
+                            ? CustomColor.primaryBtnTextColor
+                            : CustomColor.grayStaticColor,
                     size: 28,
                   ),
                 );

@@ -9,12 +9,14 @@ class WebNavList extends StatelessWidget {
     required this.icon,
     required this.index,
     required this.textStyle,
+    required this.padding,
   });
 
   final String navName;
   final Icon icon;
   final int index;
   final TextStyle textStyle;
+  final Padding padding;
 
   @override
   Widget build(BuildContext context) {
@@ -37,22 +39,13 @@ class WebNavList extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 16, 0),
-                  child: Container(
-                    width: 4,
-                    height: 100,
-                    decoration: BoxDecoration(color: Colors.blue),
-                  ),
-                ),
+                padding,
+
                 icon,
                 // Icon(icon, color: Colors.green, size: 28),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
-                  child: Text(
-                    navName,
-                    style: textStyle
-                  ),
+                  child: Text(navName, style: textStyle),
                 ),
               ],
             ),
