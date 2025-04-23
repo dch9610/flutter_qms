@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:qms_web/widgets/nav/web_nav_widget.dart';
 
-class MainScreen extends StatelessWidget {
-  const MainScreen({super.key});
+class ProductScreen extends StatelessWidget {
+  const ProductScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,7 @@ class MainScreen extends StatelessWidget {
         title: Text("QMS"),
       ),
       body: Row(
-        children: [WebNavWidget()],
+        children: [WebNavWidget(currentIndex: 3,)],
       ),
     );
   }

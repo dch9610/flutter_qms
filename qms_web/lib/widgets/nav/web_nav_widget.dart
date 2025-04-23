@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:qms_web/util/asset_path.dart';
 import 'package:qms_web/util/util_color.dart';
+import 'package:qms_web/util/util_menu.dart';
+import 'package:qms_web/util/util_text.dart';
 import 'package:qms_web/widgets/nav/web_nav_list.dart';
 
-class WebNavWidget extends StatefulWidget {
-  const WebNavWidget({super.key});
+class WebNavWidget extends StatelessWidget {
+  const WebNavWidget({super.key, required this.currentIndex});
 
-  @override
-  State<WebNavWidget> createState() => _WebNavWidgetState();
-}
-
-class _WebNavWidgetState extends State<WebNavWidget> {
+  final int currentIndex;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -49,22 +47,31 @@ class _WebNavWidgetState extends State<WebNavWidget> {
                   fit: BoxFit.fitWidth,
                 ),
               ),
-              const SizedBox(height: 10,),
-              
-              WebNavList(
-                navName: "MAIN",
-                icon: Icon(Icons.home_filled, color: Colors.blue, size: 28),
-              ),
+              const SizedBox(height: 10),
 
-              WebNavList(
-                navName: "FH COIL 작업실적",
-                icon: Icon(Icons.factory_rounded, color: Colors.blue, size: 28),
-              ),
-
-              WebNavList(
-                navName: "HOT COIL 작업실적",
-                icon: Icon(Icons.factory_sharp, color: Colors.blue, size: 28),
-              ),
+              ...List.generate(UtilMenu.menuItems.length, (index) {
+                final item = UtilMenu.menuItems[index];
+                return WebNavList(
+                  navName: item.title,
+                  index: index,
+                  textStyle:
+                      currentIndex == index
+                          ? UtilText.get24(
+                            context,
+                            CustomColor.primaryBtnTextColor,
+                          ).copyWith(fontWeight: FontWeight.bold)
+                          : UtilText.get15(
+                            context,
+                            CustomColor.primaryBtnTextColor,
+                          ).copyWith(fontWeight: FontWeight.w400),
+                  icon: Icon(
+                    // UtilMenu.menuIcon[index],
+                    item.icon,
+                    color: CustomColor.grayStaticColor,
+                    size: 28,
+                  ),
+                );
+              }),
             ],
           ),
         ),

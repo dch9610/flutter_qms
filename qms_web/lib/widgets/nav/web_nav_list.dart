@@ -1,19 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:qms_web/util/util_color.dart';
-import 'package:qms_web/util/util_text.dart';
+import 'package:qms_web/util/util_menu.dart';
 
 class WebNavList extends StatelessWidget {
-  const WebNavList({super.key, required this.navName, required this.icon});
+  const WebNavList({
+    super.key,
+    required this.navName,
+    required this.icon,
+    required this.index,
+    required this.textStyle,
+  });
 
   final String navName;
   final Icon icon;
+  final int index;
+  final TextStyle textStyle;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 12),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          UtilMenu.changeIndex(context, index);
+        },
         child: Container(
           width: double.infinity,
           height: 50,
@@ -38,10 +48,10 @@ class WebNavList extends StatelessWidget {
                 icon,
                 // Icon(icon, color: Colors.green, size: 28),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(12, 5, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
                   child: Text(
                     navName,
-                    style: UtilText.get20(context, CustomColor.grayStaticColor),
+                    style: textStyle
                   ),
                 ),
               ],
