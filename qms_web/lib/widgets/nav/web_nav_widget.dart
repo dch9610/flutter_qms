@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qms_web/util/asset_path.dart';
+import 'package:qms_web/util/util_color.dart';
 import 'package:qms_web/widgets/nav/web_nav_list.dart';
 
 class WebNavWidget extends StatefulWidget {
@@ -18,7 +19,7 @@ class _WebNavWidgetState extends State<WebNavWidget> {
         width: 270,
         height: double.infinity,
         decoration: BoxDecoration(
-          color: Colors.grey,
+          color: CustomColor.backgroundColor,
           boxShadow: [
             BoxShadow(
               blurRadius: 4,
@@ -42,13 +43,14 @@ class _WebNavWidgetState extends State<WebNavWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(24, 0, 0, 0),
                 child: Image.asset(
-                  AssetPath.menuSysLogo,
+                  AssetPath.menuDKCMLogo,
                   width: 200,
                   height: 50,
                   fit: BoxFit.fitWidth,
                 ),
               ),
-
+              const SizedBox(height: 10,),
+              
               WebNavList(
                 navName: "MAIN",
                 icon: Icon(Icons.home_filled, color: Colors.blue, size: 28),

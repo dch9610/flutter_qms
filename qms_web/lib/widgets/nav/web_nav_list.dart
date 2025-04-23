@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qms_web/util/util_color.dart';
 import 'package:qms_web/util/util_text.dart';
 
 class WebNavList extends StatelessWidget {
@@ -17,7 +18,7 @@ class WebNavList extends StatelessWidget {
           width: double.infinity,
           height: 50,
           decoration: BoxDecoration(
-            color: Colors.grey,
+            color: CustomColor.backgroundColor,
             borderRadius: BorderRadius.circular(0),
             shape: BoxShape.rectangle,
           ),
@@ -40,7 +41,7 @@ class WebNavList extends StatelessWidget {
                   padding: EdgeInsetsDirectional.fromSTEB(12, 5, 0, 0),
                   child: Text(
                     navName,
-                    style: UtilText.get20(context, Colors.black),
+                    style: UtilText.get20(context, CustomColor.grayStaticColor),
                   ),
                 ),
               ],

@@ -1,6 +1,8 @@
 class AssetPath{
   static const menuLogo = "assets/logo/DK.png";
   static const menuSysLogo = "assets/logo/DKSYSTEMS.png";
+  static const menuDKCMLogo = "assets/logo/DKCM.png";
+
   static const hamburger = "assets/images/hamburger.png";
   static const questionHeaderImage = "assets/images/question_header_image.png";
   static const recruitHeaderImage = "assets/images/recruit_header_image.png";
