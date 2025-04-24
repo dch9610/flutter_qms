@@ -31,6 +31,8 @@ class WidgetMainDatacard extends StatelessWidget {
                 style: UtilText.get20(context, UtilityColor.primaryTextColor),
               ),
               const SizedBox(height: 10),
+
+              // LINE SPEED
               Row(
                 children: [
                   Padding(
@@ -52,7 +54,6 @@ class WidgetMainDatacard extends StatelessWidget {
                   ),
                 ],
               ),
-
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                 child: Row(
@@ -68,6 +69,8 @@ class WidgetMainDatacard extends StatelessWidget {
               ),
 
               const SizedBox(height: 40),
+
+              // TCM INFORMATION
               Row(
                 children: [
                   Padding(
@@ -89,7 +92,6 @@ class WidgetMainDatacard extends StatelessWidget {
                   ),
                 ],
               ),
-
               const SizedBox(height: 15),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 1),
@@ -151,6 +153,8 @@ class WidgetMainDatacard extends StatelessWidget {
                             decoration: BoxDecoration(color: Colors.black),
                           ),
                         ),
+
+                        // TCM INFORMATION
                         Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
