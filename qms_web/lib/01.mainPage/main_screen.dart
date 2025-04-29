@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qms_web/01.mainPage/widgets/widget_day_production_status.dart';
 import 'package:qms_web/01.mainPage/widgets/widget_main_state.dart';
+import 'package:qms_web/01.mainPage/widgets/widget_main_stop_information.dart';
 import 'package:qms_web/01.mainPage/widgets/widget_month_production_status.dart';
 import 'package:qms_web/util/util_color.dart';
 import 'package:qms_web/util/util_text.dart';
@@ -83,6 +84,7 @@ class MainScreen extends StatelessWidget {
 
                                       WidgetMonthProductionStatus(),
 
+                                      WidgetMainStopInformation(),
                                       // if (screendWidth >= 1200)
                                       //   WidgetMainStopInformation(),
                                     ],

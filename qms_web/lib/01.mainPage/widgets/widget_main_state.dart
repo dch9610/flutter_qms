@@ -115,7 +115,6 @@ class _WidgetMainDatacardState extends State<WidgetMainDatacard> {
         double.tryParse(data['Current']['iTarWidth'].toString()) ?? 0.0;
     final iCurrentiTarWidthValue = formatter.format(iCurrentiTarWidth);
 
-
     final cNextCoilNo =
         (data["Next"]["cCoilNo"]?.toString().trim().isEmpty ?? true)
             ? null

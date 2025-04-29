@@ -22,284 +22,39 @@ class WidgetMainStopInformation extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("일 생산현황"),
-                const SizedBox(height: 10),
-
                 Row(
                   children: [
-                    Container(
-                      width: 84,
-                      height: 8,
-                      decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                    Container(
-                      width: 48,
-                      height: 8,
-                      decoration: BoxDecoration(
-                        color: Colors.green,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                    Expanded(
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(10, 0, 5, 0),
                       child: Container(
-                        width: 100,
-                        height: 8,
-                        decoration: BoxDecoration(
-                          color: Colors.blue,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
+                        width: 4,
+                        height: 15,
+                        decoration: BoxDecoration(color: Colors.blue),
+                      ),
+                    ),
+                    Text(
+                      "PLTCM STOP INFORMATION",
+                      style: UtilText.get15(
+                        context,
+                        UtilityColor.primaryTextColor,
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 15),
+                const SizedBox(height: 10),
 
-                Expanded(
-                  child: GridView(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                      childAspectRatio: 1,
-                    ),
-                    scrollDirection: Axis.vertical,
-
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 1),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
                     children: [
-                      Container(
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              width: 48,
-                              height: 48,
-                              decoration: BoxDecoration(
-                                color: Colors.blue,
-                                shape: BoxShape.circle,
-                              ),
-                              alignment: AlignmentDirectional(0, 0),
-                              child: Icon(
-                                Icons.factory,
-                                color: CustomColor.secondary600Color,
-                                size: 24,
-                              ),
-                            ),
-                            const SizedBox(height: 5),
-
-                            Text(
-                              "투입량",
-                              style: UtilText.get15(
-                                context,
-                                UtilityColor.primaryTextColor,
-                              ),
-                            ),
-                            const SizedBox(height: 5),
-
-                            Container(
-                              height: 36,
-                              decoration: BoxDecoration(
-                                color: Colors.blue,
-                                borderRadius: BorderRadius.circular(18),
-                              ),
-                              alignment: AlignmentDirectional(0, 0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "1000",
-                                    style: UtilText.get13(
-                                      context,
-                                      UtilityColor.primaryTextColor,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-
-                      Container(
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              width: 48,
-                              height: 48,
-                              decoration: BoxDecoration(
-                                color: Colors.blue,
-                                shape: BoxShape.circle,
-                              ),
-                              alignment: AlignmentDirectional(0, 0),
-                              child: Icon(
-                                Icons.factory,
-                                color: CustomColor.secondary600Color,
-                                size: 24,
-                              ),
-                            ),
-                            const SizedBox(height: 5),
-
-                            Text(
-                              "투입량",
-                              style: UtilText.get15(
-                                context,
-                                UtilityColor.primaryTextColor,
-                              ),
-                            ),
-                            const SizedBox(height: 5),
-
-                            Container(
-                              height: 36,
-                              decoration: BoxDecoration(
-                                color: Colors.blue,
-                                borderRadius: BorderRadius.circular(18),
-                              ),
-                              alignment: AlignmentDirectional(0, 0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "1000",
-                                    style: UtilText.get13(
-                                      context,
-                                      UtilityColor.primaryTextColor,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-
-                      Container(
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              width: 48,
-                              height: 48,
-                              decoration: BoxDecoration(
-                                color: Colors.blue,
-                                shape: BoxShape.circle,
-                              ),
-                              alignment: AlignmentDirectional(0, 0),
-                              child: Icon(
-                                Icons.factory,
-                                color: CustomColor.secondary600Color,
-                                size: 24,
-                              ),
-                            ),
-                            const SizedBox(height: 5),
-
-                            Text(
-                              "투입량",
-                              style: UtilText.get15(
-                                context,
-                                UtilityColor.primaryTextColor,
-                              ),
-                            ),
-                            const SizedBox(height: 5),
-
-                            Container(
-                              height: 36,
-                              decoration: BoxDecoration(
-                                color: Colors.blue,
-                                borderRadius: BorderRadius.circular(18),
-                              ),
-                              alignment: AlignmentDirectional(0, 0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "1000",
-                                    style: UtilText.get13(
-                                      context,
-                                      UtilityColor.primaryTextColor,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-
-                      Container(
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              width: 48,
-                              height: 48,
-                              decoration: BoxDecoration(
-                                color: Colors.blue,
-                                shape: BoxShape.circle,
-                              ),
-                              alignment: AlignmentDirectional(0, 0),
-                              child: Icon(
-                                Icons.factory,
-                                color: CustomColor.secondary600Color,
-                                size: 24,
-                              ),
-                            ),
-                            const SizedBox(height: 5),
-
-                            Text(
-                              "투입량",
-                              style: UtilText.get15(
-                                context,
-                                UtilityColor.primaryTextColor,
-                              ),
-                            ),
-                            const SizedBox(height: 5),
-
-                            Container(
-                              height: 36,
-                              decoration: BoxDecoration(
-                                color: Colors.blue,
-                                borderRadius: BorderRadius.circular(18),
-                              ),
-                              alignment: AlignmentDirectional(0, 0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "1000",
-                                    style: UtilText.get13(
-                                      context,
-                                      UtilityColor.primaryTextColor,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                      const SizedBox(width: 10,),
+                      Expanded(flex: 4, child: Text("DATE",textAlign: TextAlign.center,)),
+                      Expanded(flex: 4, child: Text("TIME",textAlign: TextAlign.center,)),
+                      Expanded(flex: 8, child: Text("휴지",textAlign: TextAlign.center,)),
+                      Expanded(flex: 4, child: Text("사유",textAlign: TextAlign.center,)),
+                      Expanded(flex: 8, child: Text("소분류",textAlign: TextAlign.center,)),
+                      ],
                   ),
                 ),
               ],
