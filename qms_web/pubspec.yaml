@@ -12,6 +12,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  fl_chart: 0.68.0
+
   cupertino_icons: ^1.0.8
   beamer: ^1.7.0
   mysql_client: ^0.0.27

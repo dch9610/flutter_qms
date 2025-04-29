@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:qms_web/01.mainPage/widgets/widget_day_production_status.dart';
 import 'package:qms_web/01.mainPage/widgets/widget_main_state.dart';
+import 'package:qms_web/01.mainPage/widgets/widget_main_stop_information.dart';
+import 'package:qms_web/01.mainPage/widgets/widget_month_production_status.dart';
 import 'package:qms_web/util/util_color.dart';
 import 'package:qms_web/util/util_text.dart';
 import 'package:qms_web/widgets/nav/web_nav_widget.dart';
@@ -10,9 +12,10 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screendWidth = MediaQuery.of(context).size.width;
     return LayoutBuilder(
       builder: (context, constrains) {
-        if (constrains.minWidth < 1000) {
+        if (constrains.minWidth < 800) {
           return Scaffold(
             body: Center(
               child: Text(
@@ -24,7 +27,7 @@ class MainScreen extends StatelessWidget {
         }
         return Scaffold(
           backgroundColor: Colors.white,
-          appBar: AppBar(title: Text("QMS")),
+          // appBar: AppBar(title: Text("QMS")),
           body: Row(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,15 +75,26 @@ class MainScreen extends StatelessWidget {
 
                               const SizedBox(height: 20),
 
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
+                              Column(
                                 children: [
-                                  WidgetDayProductionStatus(),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      WidgetDayProductionStatus(),
 
-                                  WidgetDayProductionStatus(),
+                                      WidgetMonthProductionStatus(),
+
+                                      // if (screendWidth >= 1200)
+                                      //   WidgetMainStopInformation(),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 10),
+                                  
+                                  // if (screendWidth < 1000)
+                                  //   WidgetMainStopInformation(),
                                 ],
                               ),
-                              const SizedBox(height: 30),
+                              // const SizedBox(height: 30),
                             ],
                           ),
                         ),

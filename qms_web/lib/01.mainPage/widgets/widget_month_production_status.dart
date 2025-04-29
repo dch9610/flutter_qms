@@ -6,15 +6,16 @@ import 'package:intl/intl.dart';
 import 'package:qms_web/util/util_color.dart';
 import 'package:qms_web/util/util_text.dart';
 
-class WidgetDayProductionStatus extends StatefulWidget {
-  const WidgetDayProductionStatus({super.key});
+class WidgetMonthProductionStatus extends StatefulWidget {
+  const WidgetMonthProductionStatus({super.key});
 
   @override
-  State<WidgetDayProductionStatus> createState() =>
+  State<WidgetMonthProductionStatus> createState() =>
       _WidgetDayProductionStatusState();
 }
 
-class _WidgetDayProductionStatusState extends State<WidgetDayProductionStatus> {
+class _WidgetDayProductionStatusState
+    extends State<WidgetMonthProductionStatus> {
   Map<String, dynamic> data = {};
 
   Future<void> fetchData() async {
@@ -41,8 +42,8 @@ class _WidgetDayProductionStatusState extends State<WidgetDayProductionStatus> {
     if (rawDate.length != 8) return rawDate;
     final year = rawDate.substring(0, 4);
     final month = rawDate.substring(4, 6);
-    final day = rawDate.substring(6, 8);
-    return "$year.$month.$day";
+
+    return "$year.$month";
   }
 
   @override
@@ -51,24 +52,26 @@ class _WidgetDayProductionStatusState extends State<WidgetDayProductionStatus> {
       return const Center(child: CircularProgressIndicator()); // 로딩 중 표시
     }
 
-    final iEntWeight =
-        double.tryParse(data['dayProduct']['iEntWeight'].toString()) ?? 0.0;
-    final iDivEntWeiget = iEntWeight / 1000;
+    final iCurEntWeightSum =
+        double.tryParse(data['curMonthProduct']['iEntWeightSum'].toString()) ??
+        0.0;
+    final iCurDivEntWeight = iCurEntWeightSum / 1000;
 
-    final iDelSumWeight =
-        double.tryParse(data['dayProduct']['iDelSumWeight'].toString()) ?? 0.0;
-    final iDivDelWeiget = iDelSumWeight / 1000;
+    final iCurDelWeightSum =
+        double.tryParse(data['curMonthProduct']['iDelWeightSum'].toString()) ??
+        0.0;
+    final iCurDivDelWeight = iCurDelWeightSum / 1000;
 
-    final iDelErrorWeight =
-        double.tryParse(data['dayProduct']['iDelErrorWeight'].toString()) ?? 0.0;
-    final iDivDelErrorWeight = iDelErrorWeight / 1000;
 
-    final iTmTime =
-        double.tryParse(data['dayProduct']['iTmTime'].toString()) ?? 0.0;
-    double iTonHour = 0.0;
-    if (iEntWeight != 0) {
-      iTonHour = (iDelSumWeight / iTmTime) * 60 / 1000;
-    }
+    final iPreEntWeightSum =
+        double.tryParse(data['preMonthProduct']['iEntWeightSum'].toString()) ??
+        0.0;
+    final iPreDivEntWeight = iPreEntWeightSum / 1000;
+
+    final iPreDelWeightSum =
+        double.tryParse(data['preMonthProduct']['iDelWeightSum'].toString()) ??
+        0.0;
+    final iPreDivDelWeight = iPreDelWeightSum / 1000;
 
     final formatter = NumberFormat("#,##0.000");
 
@@ -86,19 +89,16 @@ class _WidgetDayProductionStatusState extends State<WidgetDayProductionStatus> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // ...data.map((item) {
-              //   String cDate = item['cDate'].toString();
-              //   String formattedDate = formatDate(cDate); // 결과: 2025.04.21
-              //   return Text(
-              //     "일 생산 현황 $formattedDate",
-              //     style: UtilText.get20(context, UtilColor.blue40),
-              //   );
-              // }),
-              if (data['dayProduct'] != null)
-                Text(
-                  "일 생산 현황 ${formatDate(data['dayProduct']['cDate'])}",
-                  style: UtilText.get20(context, UtilColor.blue40),
-                ),
+              Row(
+                children: [
+                  const SizedBox(width: 30),
+                  Text(
+                    "월 생산 현황",
+                    style: UtilText.get20(context, UtilColor.blue40),
+                  ),
+                ],
+              ),
+
               const SizedBox(height: 20),
 
               Expanded(
@@ -137,7 +137,7 @@ class _WidgetDayProductionStatusState extends State<WidgetDayProductionStatus> {
                           const SizedBox(height: 5),
 
                           Text(
-                            "투입량",
+                            "당월 투입량",
                             style: UtilText.get15(
                               context,
                               UtilityColor.primaryTextColor,
@@ -156,24 +156,9 @@ class _WidgetDayProductionStatusState extends State<WidgetDayProductionStatus> {
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                // ...data.map((item) {
-                                //   final iEntWeight =
-                                //       double.tryParse(
-                                //         item['iEntWeight'].toString(),
-                                //       ) ??
-                                //       0.0;
-                                //   final iDivEntWeiget = iEntWeight / 1000;
-                                //   return Text(
-                                //     formatter.format(iDivEntWeiget),
-                                //     style: UtilText.get13(
-                                //       context,
-                                //       Colors.white,
-                                //     ),
-                                //   );
-                                // }),
-                                if (data['dayProduct'] != null)
+                                if (data['curMonthProduct'] != null)
                                   Text(
-                                    formatter.format(iDivEntWeiget),
+                                    formatter.format(iCurDivEntWeight),
                                     style: UtilText.get13(
                                       context,
                                       UtilityColor.secondaryBackgroundColor,
@@ -211,7 +196,7 @@ class _WidgetDayProductionStatusState extends State<WidgetDayProductionStatus> {
                           const SizedBox(height: 5),
 
                           Text(
-                            "생산량",
+                            "당월 생산량",
                             style: UtilText.get15(
                               context,
                               UtilityColor.primaryTextColor,
@@ -230,24 +215,9 @@ class _WidgetDayProductionStatusState extends State<WidgetDayProductionStatus> {
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                // ...data.map((item) {
-                                //   final iEntWeight =
-                                //       double.tryParse(
-                                //         item['iDelSumWeight'].toString(),
-                                //       ) ??
-                                //       0.0;
-                                //   final iDivEntWeiget = iEntWeight / 1000;
-                                //   return Text(
-                                //     formatter.format(iDivEntWeiget),
-                                //     style: UtilText.get13(
-                                //       context,
-                                //       Colors.white,
-                                //     ),
-                                //   );
-                                // }),
-                                if (data['dayProduct'] != null)
+                                if (data['curMonthProduct'] != null)
                                   Text(
-                                    formatter.format(iDivDelWeiget),
+                                    formatter.format(iCurDivDelWeight),
                                     style: UtilText.get13(
                                       context,
                                       UtilityColor.secondaryBackgroundColor,
@@ -285,7 +255,7 @@ class _WidgetDayProductionStatusState extends State<WidgetDayProductionStatus> {
                           const SizedBox(height: 5),
 
                           Text(
-                            "불량량",
+                            "전월 투입량",
                             style: UtilText.get15(
                               context,
                               UtilityColor.primaryTextColor,
@@ -304,25 +274,9 @@ class _WidgetDayProductionStatusState extends State<WidgetDayProductionStatus> {
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                // ...data.map((item) {
-                                //   final iDelErrorWeight =
-                                //       double.tryParse(
-                                //         item['iDelErrorWeight'].toString(),
-                                //       ) ??
-                                //       0.0;
-                                //   final iDivDelErrorWeight =
-                                //       iDelErrorWeight / 1000;
-                                //   return Text(
-                                //     formatter.format(iDivDelErrorWeight),
-                                //     style: UtilText.get13(
-                                //       context,
-                                //       Colors.white,
-                                //     ),
-                                //   );
-                                // }),
-                                if (data['dayProduct'] != null)
+                                if (data['curMonthProduct'] != null)
                                   Text(
-                                    formatter.format(iDivDelErrorWeight),
+                                    formatter.format(iPreDivEntWeight),
                                     style: UtilText.get13(
                                       context,
                                       UtilityColor.secondaryBackgroundColor,
@@ -360,7 +314,7 @@ class _WidgetDayProductionStatusState extends State<WidgetDayProductionStatus> {
                           const SizedBox(height: 5),
 
                           Text(
-                            "T/H",
+                            "전월 생산량",
                             style: UtilText.get15(
                               context,
                               UtilityColor.primaryTextColor,
@@ -378,42 +332,14 @@ class _WidgetDayProductionStatusState extends State<WidgetDayProductionStatus> {
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                // ...data.map((item) {
-                                //   final iDelSumWeight =
-                                //       double.tryParse(
-                                //         item['iDelSumWeight'].toString(),
-                                //       ) ??
-                                //       0.0;
-                                //   final iEntWeight =
-                                //       double.tryParse(
-                                //         item['iTmTime'].toString(),
-                                //       ) ??
-                                //       0.0;
-                                //   double iDivEntWeight = 0.0;
-                                //   if (iEntWeight != 0) {
-                                //     iDivEntWeight =
-                                //         (iDelSumWeight / iEntWeight) *
-                                //         60 /
-                                //         1000;
-                                //   }
-                                //   return Text(
-                                //     formatter.format(iDivEntWeight),
-                                //     style: UtilText.get13(
-                                //       context,
-                                //       Colors.white,
-                                //     ),
-                                //   );
-                                // }),
-                                if (data['dayProduct'] != null)
+                              children: [if (data['curMonthProduct'] != null)
                                   Text(
-                                    formatter.format(iTonHour),
+                                    formatter.format(iPreDivDelWeight),
                                     style: UtilText.get13(
                                       context,
                                       UtilityColor.secondaryBackgroundColor,
                                     ),
-                                  ),
-                              ],
+                                  ),],
                             ),
                           ),
                         ],
