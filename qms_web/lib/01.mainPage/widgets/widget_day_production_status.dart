@@ -19,7 +19,7 @@ class _WidgetDayProductionStatusState extends State<WidgetDayProductionStatus> {
 
   Future<void> fetchData() async {
     http.Response response = await http.get(
-      Uri.parse("http://localhost:8080/model/main/main_production.php"),
+      Uri.parse("http://localhost:8080/model/main_production.php"),
     );
 
     if (response.statusCode == 200) {
