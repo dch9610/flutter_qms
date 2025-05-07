@@ -12,10 +12,11 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var minWidth = 1200;
     // double screendWidth = MediaQuery.of(context).size.width;
     return LayoutBuilder(
       builder: (context, constrains) {
-        if (constrains.minWidth < 1200) {
+        if (constrains.minWidth < minWidth) {
           return Scaffold(
             body: Center(
               child: Text(
