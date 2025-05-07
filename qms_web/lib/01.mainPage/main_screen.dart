@@ -15,7 +15,7 @@ class MainScreen extends StatelessWidget {
     // double screendWidth = MediaQuery.of(context).size.width;
     return LayoutBuilder(
       builder: (context, constrains) {
-        if (constrains.minWidth < 800) {
+        if (constrains.minWidth < 1200) {
           return Scaffold(
             body: Center(
               child: Text(
@@ -56,43 +56,45 @@ class MainScreen extends StatelessWidget {
                             children: [
                               SizedBox(height: 32),
                               Text(
-                                "Dash board",
-                                style: UtilText.get20(
+                                "QMS",
+                                style: UtilText.get32(
                                   context,
                                   UtilityColor.primaryTextColor,
                                 ).copyWith(fontWeight: FontWeight.bold),
                               ),
                               SizedBox(height: 5),
                               Text(
-                                "Welcome to your company dashboard, review activity below.",
+                                "Quality Management System",
                                 style: UtilText.get11(
                                   context,
                                   UtilityColor.primaryTextColor,
                                 ).copyWith(fontWeight: FontWeight.bold),
                               ),
 
-                              WidgetMainDatacard(),
-
                               const SizedBox(height: 20),
-
                               Column(
                                 children: [
                                   Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
+                                      Expanded(child: WidgetMainDatacard()),
                                       WidgetDayProductionStatus(),
-
                                       WidgetMonthProductionStatus(),
-
-                                      WidgetMainStopInformation(),
-                                      // if (screendWidth >= 1200)
-                                      //   WidgetMainStopInformation(),
                                     ],
                                   ),
                                   const SizedBox(height: 10),
-                                  
-                                  // if (screendWidth < 1000)
-                                  //   WidgetMainStopInformation(),
+                                ],
+                              ),
+
+                              const SizedBox(height: 30),
+
+                              Column(
+                                children: [
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [WidgetMainStopInformation()],
+                                  ),
+                                  const SizedBox(height: 10),
                                 ],
                               ),
                               // const SizedBox(height: 30),

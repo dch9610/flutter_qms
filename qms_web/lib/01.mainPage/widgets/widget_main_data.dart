@@ -16,7 +16,7 @@ class WidgetMainData extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 16, 0),
+        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
         child: Container(
           width: 220,
           decoration: BoxDecoration(

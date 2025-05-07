@@ -76,12 +76,12 @@ class _WidgetDayProductionStatusState
     final formatter = NumberFormat("#,##0.000");
 
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(4, 0, 8, 0),
+      padding: const EdgeInsetsDirectional.fromSTEB(4, 16, 4, 0),
       child: Container(
         width: 300,
-        height: 330,
+        height: 350,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(22),
+          borderRadius: BorderRadius.circular(12),
           border: Border.all(color: CustomColor.primary600Color),
         ),
         child: Padding(
@@ -99,7 +99,7 @@ class _WidgetDayProductionStatusState
                 ],
               ),
 
-              const SizedBox(height: 20),
+              const SizedBox(height: 25),
 
               Expanded(
                 child: GridView(

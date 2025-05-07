@@ -146,7 +146,7 @@ class _WidgetMainDatacardState extends State<WidgetMainDatacard> {
     final iNextiWidthValue = formatter.format(iNextiWidth);
 
     final iNextiTarWidth =
-                (data['Next'] != null && data['Next']['iTarWidth'] != null)
+        (data['Next'] != null && data['Next']['iTarWidth'] != null)
             ? double.tryParse(data['Next']['iTarWidth'].toString()) ?? 0.0
             : 0.0;
     final iNextiTarWidthValue = formatter.format(iNextiTarWidth);
@@ -154,7 +154,8 @@ class _WidgetMainDatacardState extends State<WidgetMainDatacard> {
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(4, 16, 4, 0),
       child: Container(
-        width: double.infinity,
+        width: 800,
+        height: 350,
         decoration: BoxDecoration(
           color: Colors.grey,
           boxShadow: [
@@ -216,27 +217,33 @@ class _WidgetMainDatacardState extends State<WidgetMainDatacard> {
                 padding: const EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     WidgetMainData(
                       loactionName: "TCM EXIT",
                       lineSpeed: formatter.format(iTRSpeedValue),
                     ),
+                    const SizedBox(width: 10,),
                     WidgetMainData(
                       loactionName: "TCM ENTRY",
                       lineSpeed: formatter.format(i6BRSpeedValue),
                     ),
+                    const SizedBox(width: 10,),
                     WidgetMainData(
                       loactionName: "PL EXIT",
                       lineSpeed: formatter.format(iSTSpeedValue),
                     ),
+                    const SizedBox(width: 10,),
                     WidgetMainData(
                       loactionName: "PL CENTER",
                       lineSpeed: formatter.format(iPLSpeedValue),
                     ),
+                    const SizedBox(width: 10,),
                     WidgetMainData(
                       loactionName: "PL ENTRY",
                       lineSpeed: formatter.format(iEntSpeedValue),
                     ),
+                    
                   ],
                 ),
               ),
@@ -280,6 +287,7 @@ class _WidgetMainDatacardState extends State<WidgetMainDatacard> {
                         offset: Offset(0, 1),
                       ),
                     ],
+                    borderRadius: BorderRadius.circular(12),
                   ),
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),

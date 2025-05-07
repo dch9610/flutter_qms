@@ -9,7 +9,7 @@ class WidgetMainStopInformation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(4, 0, 8, 0),
+        padding: const EdgeInsetsDirectional.fromSTEB(4, 0, 4, 0),
         child: Container(
           width: 300,
           height: 330,
@@ -50,7 +50,7 @@ class WidgetMainStopInformation extends StatelessWidget {
                     children: [
                       const SizedBox(width: 10),
                       Expanded(
-                        flex: 4,
+                        flex: 6,
                         child: Text("DATE", textAlign: TextAlign.center),
                       ),
                       Expanded(
@@ -58,15 +58,15 @@ class WidgetMainStopInformation extends StatelessWidget {
                         child: Text("TIME", textAlign: TextAlign.center),
                       ),
                       Expanded(
-                        flex: 8,
+                        flex: 4,
                         child: Text("휴지", textAlign: TextAlign.center),
                       ),
                       Expanded(
-                        flex: 4,
+                        flex: 8,
                         child: Text("사유", textAlign: TextAlign.center),
                       ),
                       Expanded(
-                        flex: 8,
+                        flex: 4,
                         child: Text("소분류", textAlign: TextAlign.center),
                       ),
                     ],
@@ -79,9 +79,10 @@ class WidgetMainStopInformation extends StatelessWidget {
                   scrollDirection: Axis.vertical,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 1),
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 1),
                       child: Container(
                         width: 100,
+                        height: 40,
                         decoration: BoxDecoration(
                           color: UtilityColor.secondaryBackgroundColor,
                           boxShadow: [
@@ -92,9 +93,19 @@ class WidgetMainStopInformation extends StatelessWidget {
                             ),
                           ],
                         ),
-                        child: Padding(padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
-                        // child: Row,),
-                        )
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Expanded(flex: 6, child: Text("2025-05-07 10:00:00",textAlign: TextAlign.center,)),
+                              Expanded(flex: 4, child: Text("35",textAlign: TextAlign.center,)),
+                              Expanded(flex: 4, child: Text("휴동",textAlign: TextAlign.center,)),
+                              Expanded(flex: 8, child: Text("휴지 내용",textAlign: TextAlign.center,)),
+                              Expanded(flex: 4, child: Text("계획 휴지",textAlign: TextAlign.center,)),
+                            ],
+                          ),
+                        ),
                       ),
                     ),
                   ],
