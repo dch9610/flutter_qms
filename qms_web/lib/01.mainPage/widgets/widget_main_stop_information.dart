@@ -48,14 +48,56 @@ class WidgetMainStopInformation extends StatelessWidget {
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      const SizedBox(width: 10,),
-                      Expanded(flex: 4, child: Text("DATE",textAlign: TextAlign.center,)),
-                      Expanded(flex: 4, child: Text("TIME",textAlign: TextAlign.center,)),
-                      Expanded(flex: 8, child: Text("휴지",textAlign: TextAlign.center,)),
-                      Expanded(flex: 4, child: Text("사유",textAlign: TextAlign.center,)),
-                      Expanded(flex: 8, child: Text("소분류",textAlign: TextAlign.center,)),
-                      ],
+                      const SizedBox(width: 10),
+                      Expanded(
+                        flex: 4,
+                        child: Text("DATE", textAlign: TextAlign.center),
+                      ),
+                      Expanded(
+                        flex: 4,
+                        child: Text("TIME", textAlign: TextAlign.center),
+                      ),
+                      Expanded(
+                        flex: 8,
+                        child: Text("휴지", textAlign: TextAlign.center),
+                      ),
+                      Expanded(
+                        flex: 4,
+                        child: Text("사유", textAlign: TextAlign.center),
+                      ),
+                      Expanded(
+                        flex: 8,
+                        child: Text("소분류", textAlign: TextAlign.center),
+                      ),
+                    ],
                   ),
+                ),
+
+                ListView(
+                  padding: EdgeInsets.zero,
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 1),
+                      child: Container(
+                        width: 100,
+                        decoration: BoxDecoration(
+                          color: UtilityColor.secondaryBackgroundColor,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 0,
+                              color: UtilityColor.primaryBackgroundColor,
+                              offset: Offset(0, 1),
+                            ),
+                          ],
+                        ),
+                        child: Padding(padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                        // child: Row,),
+                        )
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

@@ -116,28 +116,39 @@ class _WidgetMainDatacardState extends State<WidgetMainDatacard> {
     final iCurrentiTarWidthValue = formatter.format(iCurrentiTarWidth);
 
     final cNextCoilNo =
-        (data["Next"]["cCoilNo"]?.toString().trim().isEmpty ?? true)
-            ? null
-            : data["Next"]["cCoilNo"];
+        (data["Next"] != null &&
+                data["Next"]["cCoilNo"] != null &&
+                data["Next"]["cCoilNo"].toString().trim().isNotEmpty)
+            ? data["Next"]["cCoilNo"]
+            : null;
 
     final iNextiThick =
-        double.tryParse(data['Next']['iThick'].toString()) ?? 0.0;
+        (data['Next'] != null && data['Next']['iThick'] != null)
+            ? double.tryParse(data['Next']['iThick'].toString()) ?? 0.0
+            : 0.0;
+
     final iNextiThickValue = formatterThree.format(
       (iNextiThick / 1000).toDouble(),
     );
 
     final iNextiTarThick =
-        double.tryParse(data['Next']['iTarThick'].toString()) ?? 0.0;
+        (data['Next'] != null && data['Next']['iTarThick'] != null)
+            ? double.tryParse(data['Next']['iTarThick'].toString()) ?? 0.0
+            : 0.0;
     final iNextiTarThickValue = formatterThree.format(
       (iNextiTarThick / 1000).toDouble(),
     );
 
     final iNextiWidth =
-        double.tryParse(data['Next']['iWidth'].toString()) ?? 0.0;
-    final iNextiWidthkValue = formatter.format(iNextiWidth);
+        (data['Next'] != null && data['Next']['iWidth'] != null)
+            ? double.tryParse(data['Next']['iWidth'].toString()) ?? 0.0
+            : 0.0;
+    final iNextiWidthValue = formatter.format(iNextiWidth);
 
     final iNextiTarWidth =
-        double.tryParse(data['Next']['iTarWidth'].toString()) ?? 0.0;
+                (data['Next'] != null && data['Next']['iTarWidth'] != null)
+            ? double.tryParse(data['Next']['iTarWidth'].toString()) ?? 0.0
+            : 0.0;
     final iNextiTarWidthValue = formatter.format(iNextiTarWidth);
 
     return Padding(
@@ -305,7 +316,7 @@ class _WidgetMainDatacardState extends State<WidgetMainDatacard> {
                             Expanded(
                               flex: 30,
                               child:
-                                  (cNextCoilNo == null)
+                                  (cCurrentCoilNo == null)
                                       ? const SizedBox.shrink()
                                       : Text(
                                         "$cCurrentCoilNo : $iCurrentiThickValue -> $iCurrentiTarThickValue / $iCurrentiWidthkValue -> $iCurrentiTarWidthValue",
@@ -362,7 +373,7 @@ class _WidgetMainDatacardState extends State<WidgetMainDatacard> {
                                   (cNextCoilNo == null)
                                       ? const SizedBox.shrink()
                                       : Text(
-                                        "$cNextCoilNo : $iNextiThickValue -> $iNextiTarThickValue / $iNextiWidthkValue -> $iNextiTarWidthValue",
+                                        "$cNextCoilNo : $iNextiThickValue -> $iNextiTarThickValue / $iNextiWidthValue -> $iNextiTarWidthValue",
                                         style: UtilText.get15(
                                           context,
                                           UtilityColor.primaryTextColor,
