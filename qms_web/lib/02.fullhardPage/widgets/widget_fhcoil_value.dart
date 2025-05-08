@@ -53,7 +53,10 @@ class _WidgetFhcoilValueState extends State<WidgetFhcoilValue> {
           width: 100,
           height: 30,
           decoration: BoxDecoration(
-            color: isSelected ? Colors.amber :UtilityColor.secondaryBackgroundColor,
+            color:
+                isSelected
+                    ? Colors.lightBlue[300]
+                    : UtilityColor.secondaryBackgroundColor,
             boxShadow: [
               BoxShadow(
                 blurRadius: 0,
@@ -62,7 +65,7 @@ class _WidgetFhcoilValueState extends State<WidgetFhcoilValue> {
               ),
             ],
           ),
-      
+
           child: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
             child: Row(
@@ -87,8 +90,11 @@ class _WidgetFhcoilValueState extends State<WidgetFhcoilValue> {
                 ),
                 VerticalDivider(),
                 Expanded(
-                  flex: 3,
-                  child: Text(widget.iProcTime.toString(), textAlign: TextAlign.center),
+                  flex: 4,
+                  child: Text(
+                    widget.iProcTime.toString(),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
                 VerticalDivider(),
                 Expanded(
@@ -113,7 +119,8 @@ class _WidgetFhcoilValueState extends State<WidgetFhcoilValue> {
                   flex: 3,
                   child: Text(
                     dotformatter.format(
-                      (double.tryParse(widget.iHotThick00.toString()) ?? 0.0) / 1000,
+                      (double.tryParse(widget.iHotThick00.toString()) ?? 0.0) /
+                          1000,
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -131,7 +138,8 @@ class _WidgetFhcoilValueState extends State<WidgetFhcoilValue> {
                   flex: 3,
                   child: Text(
                     dotformatter.format(
-                      (double.tryParse(widget.iActThk.toString()) ?? 0.0) / 1000,
+                      (double.tryParse(widget.iActThk.toString()) ?? 0.0) /
+                          1000,
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -149,7 +157,8 @@ class _WidgetFhcoilValueState extends State<WidgetFhcoilValue> {
                   flex: 3,
                   child: Text(
                     dotformatter.format(
-                      (double.tryParse(widget.iActWeight.toString()) ?? 0.0) / 1000,
+                      (double.tryParse(widget.iActWeight.toString()) ?? 0.0) /
+                          1000,
                     ),
                     textAlign: TextAlign.center,
                   ),

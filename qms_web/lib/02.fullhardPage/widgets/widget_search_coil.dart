@@ -11,7 +11,7 @@ class WidgetSearchCoil extends StatelessWidget {
         padding: const EdgeInsetsDirectional.fromSTEB(4, 0, 4, 0),
         child: Container(
           width: 300,
-          height: 130,
+          height: 50,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(22),
             border: Border.all(color: CustomColor.primary600Color),
