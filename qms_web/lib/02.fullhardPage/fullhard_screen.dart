@@ -52,7 +52,7 @@ class FullhardScreen extends StatelessWidget {
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
-                              SizedBox(height: 32),
+                              SizedBox(height: 22),
                               Text(
                                 "FH COIL LIST",
                                 style: UtilText.get32(
@@ -61,7 +61,7 @@ class FullhardScreen extends StatelessWidget {
                                 ).copyWith(fontWeight: FontWeight.bold),
                               ),
 
-                              SizedBox(height: 30),
+                              SizedBox(height: 20),
 
                               Column(
                                 children: [
@@ -80,7 +80,7 @@ class FullhardScreen extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 30),
+                              SizedBox(height: 20),
                             ],
                           ),
                         ),

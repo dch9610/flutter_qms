@@ -86,14 +86,6 @@ class _WidgetDayProductionStatusState extends State<WidgetDayProductionStatus> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // ...data.map((item) {
-              //   String cDate = item['cDate'].toString();
-              //   String formattedDate = formatDate(cDate); // 결과: 2025.04.21
-              //   return Text(
-              //     "일 생산 현황 $formattedDate",
-              //     style: UtilText.get20(context, UtilColor.blue40),
-              //   );
-              // }),
               if (data['dayProduct'] != null)
                 Text(
                   "일 생산 현황 ${formatDate(data['dayProduct']['cDate'])}",

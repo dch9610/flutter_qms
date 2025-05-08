@@ -1,14 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:qms_web/util/util_color.dart';
 
 class WidgetFhcoilValue extends StatelessWidget {
-  const WidgetFhcoilValue({super.key, this.cFHCoilNo, this.cL3FHCoilNo});
+  const WidgetFhcoilValue({
+    super.key,
+    required this.cFHCoilNo,
+    required this.cL3FHCoilNo,
+    required this.cEndTime,
+    required this.iProcTime,
+    required this.cSteelGrade,
+    required this.cNextProc,
+    required this.iHotWidth00,
+    required this.iHotThick00,
+    required this.iActWidth,
+    required this.iActThk,
+    required this.iClaLength,
+    required this.iActWeight,
+    required this.cCoilStatus,
+  });
 
-  final cL3FHCoilNo;
-  final cFHCoilNo;
+  final String cL3FHCoilNo;
+  final String cFHCoilNo;
+  final String cEndTime;
+  final String iProcTime;
+  final String cSteelGrade;
+  final String cNextProc;
+  final String iHotWidth00;
+  final String iHotThick00;
+  final String iActWidth;
+  final String iActThk;
+  final String iClaLength;
+  final String iActWeight;
+  final String cCoilStatus;
 
   @override
   Widget build(BuildContext context) {
+    final formatter = NumberFormat("#,##0");
+    final dotformatter = NumberFormat("#,##0.000");
+
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 1),
       child: Container(
@@ -42,52 +72,85 @@ class WidgetFhcoilValue extends StatelessWidget {
               VerticalDivider(),
               Expanded(
                 flex: 6,
-                child: Text('종료 시각', textAlign: TextAlign.center),
+                child: Text(
+                  "${cEndTime.substring(0, 4)}-${cEndTime.substring(4, 6)}-${cEndTime.substring(6, 8)} ${cEndTime.substring(8, 10)}:${cEndTime.substring(10, 12)}:${cEndTime.substring(12, 14)}",
+                  textAlign: TextAlign.center,
+                ),
               ),
               VerticalDivider(),
               Expanded(
                 flex: 3,
-                child: Text('작업시간', textAlign: TextAlign.center),
+                child: Text(iProcTime.toString(), textAlign: TextAlign.center),
               ),
               VerticalDivider(),
               Expanded(
                 flex: 2,
-                child: Text('S/G', textAlign: TextAlign.center),
+                child: Text(cSteelGrade, textAlign: TextAlign.center),
               ),
               VerticalDivider(),
               Expanded(
                 flex: 3,
-                child: Text('차공정', textAlign: TextAlign.center),
+                child: Text(cNextProc, textAlign: TextAlign.center),
               ),
               VerticalDivider(),
               Expanded(
                 flex: 3,
-                child: Text('폭(入)', textAlign: TextAlign.center),
+                child: Text(
+                  formatter.format(int.tryParse(iHotWidth00)),
+                  textAlign: TextAlign.center,
+                ),
               ),
               VerticalDivider(),
               Expanded(
                 flex: 3,
-                child: Text('두께(入)', textAlign: TextAlign.center),
+                child: Text(
+                  dotformatter.format(
+                    (double.tryParse(iHotThick00.toString()) ?? 0.0) / 1000,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
               ),
               VerticalDivider(),
               Expanded(
                 flex: 3,
-                child: Text('폭(出)', textAlign: TextAlign.center),
+                child: Text(
+                  formatter.format(int.tryParse(iActWidth)),
+                  textAlign: TextAlign.center,
+                ),
               ),
               VerticalDivider(),
               Expanded(
                 flex: 3,
-                child: Text('두께(出)', textAlign: TextAlign.center),
+                child: Text(
+                  dotformatter.format(
+                    (double.tryParse(iActThk.toString()) ?? 0.0) / 1000,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
               ),
-              VerticalDivider(),
-              Expanded(flex: 3, child: Text('길이', textAlign: TextAlign.center)),
               VerticalDivider(),
               Expanded(
                 flex: 3,
-                child: Text('출측 중량', textAlign: TextAlign.center),
+                child: Text(
+                  formatter.format(int.tryParse(iClaLength)),
+                  textAlign: TextAlign.center,
+                ),
               ),
               VerticalDivider(),
-              Expanded(flex: 2, child: Text('상태', textAlign: TextAlign.center)),
+              Expanded(
+                flex: 3,
+                child: Text(
+                  dotformatter.format(
+                    (double.tryParse(iActWeight.toString()) ?? 0.0) / 1000,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              VerticalDivider(),
+              Expanded(
+                flex: 2,
+                child: Text(cCoilStatus, textAlign: TextAlign.center),
+              ),
             ],
           ),
         ),
