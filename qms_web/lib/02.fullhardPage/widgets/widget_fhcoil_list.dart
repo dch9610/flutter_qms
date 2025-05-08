@@ -37,8 +37,35 @@ class _WidgetFhcoilListState extends State<WidgetFhcoilList> {
     fetchData();
   }
 
+  int currentPage = 0;
+  final int itemsPerPage = 15;
+
+  void _setPage(int page) {
+    setState(() {
+      currentPage = page;
+    });
+  }
+
+  void _nextPage() {
+    if ((currentPage + 1) * itemsPerPage < coilList.length) {
+      setState(() => currentPage++);
+    }
+  }
+
+  void _previousPage() {
+    if (currentPage > 0) {
+      setState(() => currentPage--);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    int totalPages = (coilList.length / itemsPerPage).ceil();
+    int startIndex = currentPage * itemsPerPage;
+    int endIndex = (startIndex + itemsPerPage).clamp(0, coilList.length);
+
+    final visibleItems = coilList.sublist(startIndex, endIndex);
+
     return Expanded(
       child: Padding(
         padding: const EdgeInsetsDirectional.fromSTEB(4, 0, 4, 0),
@@ -85,7 +112,12 @@ class _WidgetFhcoilListState extends State<WidgetFhcoilList> {
                             ),
                           ),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                              16,
+                              0,
+                              16,
+                              0,
+                            ),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -100,9 +132,9 @@ class _WidgetFhcoilListState extends State<WidgetFhcoilList> {
                                     ),
                                   ),
                                 ),
-                
+
                                 VerticalDivider(),
-                
+
                                 Expanded(
                                   flex: 4,
                                   child: Text(
@@ -251,15 +283,15 @@ class _WidgetFhcoilListState extends State<WidgetFhcoilList> {
                           ),
                         ),
                       ),
-                
+
                       ListView.builder(
                         padding: EdgeInsets.zero,
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
-                        itemCount: 15,
+                        itemCount: visibleItems.length,
                         itemBuilder: (context, index) {
                           if (coilList.isNotEmpty) {
-                            final coil = coilList[index];
+                            final coil = visibleItems[index];
                             return WidgetFhcoilValue(
                               cL3FHCoilNo: coil['cL3FHCoilNo'],
                               cFHCoilNo: coil['cFHCoilNo'],
@@ -279,6 +311,64 @@ class _WidgetFhcoilListState extends State<WidgetFhcoilList> {
                             return Text("");
                           }
                         },
+                      ),
+
+                      // Padding(
+                      //   padding: EdgeInsets.symmetric(vertical: 8),
+                      //   child: Row(
+                      //     mainAxisAlignment: MainAxisAlignment.center,
+                      //     children: [
+                      //       ElevatedButton(
+                      //         onPressed: _previousPage,
+                      //         child: Text("이전"),
+                      //       ),
+                      //       SizedBox(width: 16),
+                      //       Text("페이지 ${currentPage + 1}"),
+                      //       SizedBox(width: 16),
+                      //       ElevatedButton(
+                      //         onPressed: _nextPage,
+                      //         child: Text("다음"),
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 8),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            IconButton(
+                              onPressed: _previousPage,
+                              icon: Icon(Icons.chevron_left),
+                            ),
+
+                            ...List.generate(totalPages, (index) {
+                              return Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 4),
+                                child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor:
+                                        index == currentPage
+                                            ? Colors.blue
+                                            : Colors.grey[300],
+                                    foregroundColor:
+                                        index == currentPage
+                                            ? Colors.white
+                                            : Colors.black,
+                                    minimumSize: Size(40, 36),
+                                    padding: EdgeInsets.zero,
+                                  ),
+                                  onPressed: () => _setPage(index),
+                                  child: Text('${index + 1}'),
+                                ),
+                              );
+                            }),
+                            IconButton(
+                              onPressed: _nextPage,
+                              icon: Icon(Icons.chevron_right),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
