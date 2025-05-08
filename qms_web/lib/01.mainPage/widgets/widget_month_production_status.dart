@@ -62,7 +62,6 @@ class _WidgetDayProductionStatusState
         0.0;
     final iCurDivDelWeight = iCurDelWeightSum / 1000;
 
-
     final iPreEntWeightSum =
         double.tryParse(data['preMonthProduct']['iEntWeightSum'].toString()) ??
         0.0;
@@ -332,14 +331,16 @@ class _WidgetDayProductionStatusState
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: [if (data['curMonthProduct'] != null)
+                              children: [
+                                if (data['curMonthProduct'] != null)
                                   Text(
                                     formatter.format(iPreDivDelWeight),
                                     style: UtilText.get13(
                                       context,
                                       UtilityColor.secondaryBackgroundColor,
                                     ),
-                                  ),],
+                                  ),
+                              ],
                             ),
                           ),
                         ],
